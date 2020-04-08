@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+    <display-name>kuangshanJava</display-name>
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.html</url-pattern>
+        <url-pattern>*.htm</url-pattern>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>*.PNG</url-pattern>
+        <url-pattern>*.jpeg</url-pattern>
+        <url-pattern>*.png</url-pattern>
+        <url-pattern>*.jpg</url-pattern>
+        <url-pattern>*.js</url-pattern>
+        <url-pattern>*.eot</url-pattern>
+        <url-pattern>*.svg</url-pattern>
+        <url-pattern>*.ttf</url-pattern>
+        <url-pattern>*.woff</url-pattern>
+        <url-pattern>*.woff2</url-pattern>
+        <url-pattern>*.gif</url-pattern>
+        <url-pattern>*.zip</url-pattern>
+        <url-pattern>*.xls</url-pattern>
+        <url-pattern>*.rar</url-pattern>
+        <url-pattern>*.cbak</url-pattern>
+        <url-pattern>*.swf</url-pattern>
+        <url-pattern>*.pdf</url-pattern>
+        <url-pattern>*.doc</url-pattern>
+        <url-pattern>*.xlsx</url-pattern>
+        <url-pattern>*.ppt</url-pattern>
+        <url-pattern>*.txt</url-pattern>
+        <url-pattern>*.pptx</url-pattern>
+        <url-pattern>*.docx</url-pattern>
+        <url-pattern>*.cur</url-pattern>
+        <url-pattern>*.bcmap</url-pattern>
+        <url-pattern>*.properties</url-pattern>
+        <url-pattern>*.mp4</url-pattern>
+        <url-pattern>*.mp3</url-pattern>
+        <url-pattern>*.ogg</url-pattern>
+        <url-pattern>*.ts</url-pattern>
+        <url-pattern>*.gz</url-pattern>
+        <url-pattern>*.apk</url-pattern>
+        <url-pattern>*.wma</url-pattern>
+        <url-pattern>*.ape</url-pattern>
+        <url-pattern>*.flac</url-pattern>
+        <url-pattern>*.aac</url-pattern>
+        <url-pattern>*.ac3</url-pattern>
+        <url-pattern>*.mmf</url-pattern>
+        <url-pattern>*.amr</url-pattern>
+        <url-pattern>*.m4a</url-pattern>
+        <url-pattern>*.m4r</url-pattern>
+        <url-pattern>*.wav</url-pattern>
+        <url-pattern>*.wavpack</url-pattern>
+        <url-pattern>*.mp2</url-pattern>
+
+        <url-pattern>*.asx</url-pattern>
+        <url-pattern>*.asf</url-pattern>
+        <url-pattern>*.mpg</url-pattern>
+        <url-pattern>*.wmv</url-pattern>
+        <url-pattern>*.3gp</url-pattern>
+        <url-pattern>*.mkv</url-pattern>
+        <url-pattern>*.avi</url-pattern>
+        <url-pattern>*.flv</url-pattern>
+        <url-pattern>*.webm</url-pattern>
+    </servlet-mapping>
+    <listener>
+
+        <listener-class>
+
+            org.springframework.web.util.Log4jConfigListener
+
+        </listener-class>
+
+    </listener>
+
+    <context-param>
+
+        <param-name>log4jConfigLocation</param-name>
+
+        <param-value>classpath:log4j.properties</param-value>
+
+    </context-param>
+
+    <context-param>
+
+        <param-name>log4jRefreshInterval</param-name>
+
+        <param-value>600000</param-value>
+
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:applicationContext.xml
+        </param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>springMvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:applicationContext.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>springMvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>requestFilter</filter-name>
+        <filter-class>com.kuangshan.riskcontrol.tool.RequestFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>requestFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <session-config>
+        <session-timeout>0</session-timeout>
+    </session-config>
+</web-app>

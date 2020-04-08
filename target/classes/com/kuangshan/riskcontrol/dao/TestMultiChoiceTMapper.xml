@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuangshan.riskcontrol.dao.TestMultiChoiceTMapper">
+  <resultMap id="BaseResultMap" type="com.kuangshan.riskcontrol.model.TestMultiChoiceT">
+
+    <id column="multi_choice_id" jdbcType="INTEGER" property="multi_choice_id" />
+    <result column="edu_category_id" jdbcType="INTEGER" property="edu_category_id" />
+    <result column="edu_knowledge_point_id" jdbcType="INTEGER" property="edu_knowledge_point_id" />
+    <result column="multi_choice_content" jdbcType="VARCHAR" property="multi_choice_content" />
+    <result column="multi_choice_a" jdbcType="VARCHAR" property="multi_choice_a" />
+    <result column="multi_choice_b" jdbcType="VARCHAR" property="multi_choice_b" />
+    <result column="multi_choice_c" jdbcType="VARCHAR" property="multi_choice_c" />
+    <result column="multi_choice_d" jdbcType="VARCHAR" property="multi_choice_d" />
+    <result column="answer" jdbcType="VARCHAR" property="answer" />
+    <result column="explanation" jdbcType="NVARCHAR" property="explanation" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+
+    multi_choice_id, edu_category_id, edu_knowledge_point_id, multi_choice_content, multi_choice_a, 
+    multi_choice_b, multi_choice_c, multi_choice_d, answer, deleted, explanation
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select 
+    <include refid="Base_Column_List" />
+    from test_multi_choice_t
+    where multi_choice_id = #{multi_choice_id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from test_multi_choice_t
+  </select>
+
+  <select id="selectByEduCategoryId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select
+    <include refid="Base_Column_List" />
+    from test_multi_choice_t
+    where edu_category_id = #{edu_category_id,jdbcType=INTEGER} AND deleted = 0
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from test_multi_choice_t
+    where multi_choice_id = #{multi_choice_id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.kuangshan.riskcontrol.model.TestMultiChoiceT">
+
+    insert into test_multi_choice_t (multi_choice_id, edu_category_id, 
+      edu_knowledge_point_id, multi_choice_content, 
+      multi_choice_a, multi_choice_b, multi_choice_c, 
+      multi_choice_d, answer, deleted, explanation)
+    values (#{multi_choice_id,jdbcType=INTEGER}, #{edu_category_id,jdbcType=INTEGER}, 
+      #{edu_knowledge_point_id,jdbcType=INTEGER}, #{multi_choice_content,jdbcType=VARCHAR}, 
+      #{multi_choice_a,jdbcType=VARCHAR}, #{multi_choice_b,jdbcType=VARCHAR}, #{multi_choice_c,jdbcType=VARCHAR}, 
+      #{multi_choice_d,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, #{deleted,jdbcType=INTEGER},
+      #{explanation,jdbcType=NVARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.kuangshan.riskcontrol.model.TestMultiChoiceT">
+
+    insert into test_multi_choice_t
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="multi_choice_id != null">
+        multi_choice_id,
+      </if>
+      <if test="edu_category_id != null">
+        edu_category_id,
+      </if>
+      <if test="edu_knowledge_point_id != null">
+        edu_knowledge_point_id,
+      </if>
+      <if test="multi_choice_content != null">
+        multi_choice_content,
+      </if>
+      <if test="multi_choice_a != null">
+        multi_choice_a,
+      </if>
+      <if test="multi_choice_b != null">
+        multi_choice_b,
+      </if>
+      <if test="multi_choice_c != null">
+        multi_choice_c,
+      </if>
+      <if test="multi_choice_d != null">
+        multi_choice_d,
+      </if>
+      <if test="answer != null">
+        answer,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="explanation != null">
+        explanation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="multi_choice_id != null">
+        #{multi_choice_id,jdbcType=INTEGER},
+      </if>
+      <if test="edu_category_id != null">
+        #{edu_category_id,jdbcType=INTEGER},
+      </if>
+      <if test="edu_knowledge_point_id != null">
+        #{edu_knowledge_point_id,jdbcType=INTEGER},
+      </if>
+      <if test="multi_choice_content != null">
+        #{multi_choice_content,jdbcType=VARCHAR},
+      </if>
+      <if test="multi_choice_a != null">
+        #{multi_choice_a,jdbcType=VARCHAR},
+      </if>
+      <if test="multi_choice_b != null">
+        #{multi_choice_b,jdbcType=VARCHAR},
+      </if>
+      <if test="multi_choice_c != null">
+        #{multi_choice_c,jdbcType=VARCHAR},
+      </if>
+      <if test="multi_choice_d != null">
+        #{multi_choice_d,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="explanation != null">
+        #{explanation,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.kuangshan.riskcontrol.model.TestMultiChoiceT">
+
+    update test_multi_choice_t
+    <set>
+      <if test="edu_category_id != null">
+        edu_category_id = #{edu_category_id,jdbcType=INTEGER},
+      </if>
+      <if test="edu_knowledge_point_id != null">
+        edu_knowledge_point_id = #{edu_knowledge_point_id,jdbcType=INTEGER},
+      </if>
+      <if test="multi_choice_content != null">
+        multi_choice_content = #{multi_choice_content,jdbcType=VARCHAR},
+      </if>
+      <if test="multi_choice_a != null">
+        multi_choice_a = #{multi_choice_a,jdbcType=VARCHAR},
+      </if>
+      <if test="multi_choice_b != null">
+        multi_choice_b = #{multi_choice_b,jdbcType=VARCHAR},
+      </if>
+      <if test="multi_choice_c != null">
+        multi_choice_c = #{multi_choice_c,jdbcType=VARCHAR},
+      </if>
+      <if test="multi_choice_d != null">
+        multi_choice_d = #{multi_choice_d,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="explanation != null">
+        explanation = #{explanation,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where multi_choice_id = #{multi_choice_id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.kuangshan.riskcontrol.model.TestMultiChoiceT">
+
+    update test_multi_choice_t
+    set edu_category_id = #{edu_category_id,jdbcType=INTEGER},
+      edu_knowledge_point_id = #{edu_knowledge_point_id,jdbcType=INTEGER},
+      multi_choice_content = #{multi_choice_content,jdbcType=VARCHAR},
+      multi_choice_a = #{multi_choice_a,jdbcType=VARCHAR},
+      multi_choice_b = #{multi_choice_b,jdbcType=VARCHAR},
+      multi_choice_c = #{multi_choice_c,jdbcType=VARCHAR},
+      multi_choice_d = #{multi_choice_d,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=INTEGER},
+      explanation = #{explanation,jdbcType=NVARCHAR}
+    where multi_choice_id = #{multi_choice_id,jdbcType=INTEGER}
+  </update>
+
+
+
+
+</mapper>

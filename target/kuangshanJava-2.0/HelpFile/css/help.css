@@ -1,0 +1,243 @@
+/*页面整体样式*/
+body{ overflow-x: hidden}
+.navbar-title{ 
+	display: block;
+	height: 60px;
+    width:100%;
+	font-size: 20px;
+	line-height: 60px;
+	color: black;
+	margin-bottom: 20px;
+	text-align: center;	
+	background: rgb(238,238,238);
+}
+.left-nav{
+	margin:0;
+	padding: 0;
+	background: linear-gradient(to right,rgb(251,251,251), rgb(245,245,245)); 
+}
+.left-nav li{
+	list-style-type: none;
+	padding:5px 0;
+	cursor: pointer;
+	text-indent: 20px;
+	transition: all .5s;
+}
+.left-nav li:hover{
+	text-indent: 30px;
+}
+.title-li{
+	padding: 5px 0;
+	text-indent: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	background:rgb(238,238,238)
+}
+.underline-span{
+	border-bottom: 2px solid dimgray;
+}
+/*.nav-li:hover{ text-decoration: underline}*/
+.toggle-ul{
+	display: block;
+	padding:5px 0;
+	text-indent: 20px;
+	width: 100%; 
+}
+.toggle-ul span{
+	margin-left: -20px;
+	padding-left: -10px
+}
+/*.hovercur{
+	background: #269ABC;
+}
+.clickcur{
+	background: goldenrod;
+}*/
+
+.tabs p{ 
+	padding-left: 5px;
+	text-indent: 20px;
+    font-size: 12pt;
+}
+.tabs span{
+    font-size: 12pt;
+    font-weight: bolder;
+}
+.main-intro p{
+    font-size: 12pt;
+}
+.pic-comment{ text-align: center; }
+.pic-comment img{ max-width: 85%; }
+.pic-comment p{ font-size:10pt;}
+.backtop{
+	position: fixed;
+	bottom: 60px;
+	right: 40px;
+	color: white;
+	background: black;
+	border-radius: 5px;
+	padding: 10px 15px;
+	font-size: 28px;
+	cursor: pointer
+}
+.backtop:hover{
+	background: gray
+}
+/*所有导航栏公用样式*/
+.headnav p {
+	font-size: 16pt;
+	font-weight: bold;
+}
+.line-style{
+	display: block;
+	margin: 12px 0 15px 0;
+	height: 6px;
+	width: 100%;
+	background: linear-gradient(to left,rgb(245,245,245),rgb(238,238,238),rgb(230,230,230),rgb(225,225,225),rgb(215,215,215));
+}
+.headnav img{ float: left;width: 40px; }
+.headnav ul{
+	background: url(../images/bg.jpg) repeat-x;
+	font-size: 10px; 
+	height: 75px;
+	font-family: "宋体";
+    list-style-type: none;	
+}
+.headnav ul li{
+    position:relative;
+    left:-20px;
+	display: inline-block;
+	text-align: center;
+	width: 51px;
+	padding: 0 3px 6px 3px;
+}
+.headnav ul li a{
+	float: left;
+	width: 48px;
+	padding-top:52px ;
+	text-decoration: none;
+	color:white;
+}
+
+.main-intro{
+	/*margin-top: -10px;*/
+	padding-top: 20px;
+	border: 1px	 solid rgb(204,204,204);
+}
+
+.SysDes-font{
+    font-size: 12pt; 
+    font-weight: bolder;
+    padding-left: 20px;
+}
+/*.hd1{
+    list-style-type: none;
+    margin-left: -40px;
+    background: url('helpimgs/黑点1.png') no-repeat 0px 5px;
+}*/
+.Paragraph p{
+    font-size: 12pt;
+	text-indent: 20px;
+}
+/*.icon2 li{
+    font-size: 12pt;
+    padding-left: 30px;
+    list-style-type: none;
+    background: url('helpimgs/列表图标.png') no-repeat 0px 8px;
+    height:30px;
+    line-height: 30px;
+}*/
+
+.listItem{
+    font-size: 12pt;
+    /*text-indent: 100px;*/
+    list-style-type: none;
+    margin-left: 20px;
+    line-height: 25px;
+}
+
+/*.listItem1{
+    font-size: 12pt;
+    list-style-type: none;
+    background: url('helpimgs/列表图标.png') no-repeat 0px 7px;
+    padding-left: 20px;
+    line-height: 30px;
+}*/
+.listItem1 p{
+    line-height: 15px;
+}
+.orderli li{
+    font-size: 12pt;
+    list-style-type: none;
+    margin-left: -15px;
+}
+/*.hd{
+    padding-left: 20px;
+    background: url('helpimgs/黑点1.png') no-repeat 0px 4px;
+}*/
+
+
+
+.open-more {
+    width:180px;
+    position:absolute;
+    z-index:100;
+    
+    top:75px;
+    left:-115px;
+    height:70px;
+    background-color:RGB(0,158,219);
+    display:none;
+    padding-left:13px;
+    border-bottom-left-radius:2px;
+    border-bottom-right-radius:2px;
+}
+
+.breadcrumb {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.breadcrumb a:hover {
+    text-decoration: none;
+    color: #23527c;
+}
+/*三级菜单*/
+.breadcrumb li {
+    cursor: pointer;
+    color: black;
+    border: 0;
+   
+}
+
+    .breadcrumb li :hover {
+        font-size: 16px;
+        color: #037dfa;
+    }
+
+.thirdMenu {
+    font-family: '黑体';
+    font-size: 16px;
+    /*font-weight:bold;*/
+}
+
+    .thirdMenu a {
+        text-decoration: none;
+    }
+
+/*三级菜单被选中后的样式*/
+.current {
+    font-size: 16px;
+    color: #037dfa;
+}
+
+    .current span, .current a {
+        font-size: 16px;
+        color: #037dfa;
+        border-bottom: 2px solid #037dfa;
+    }
+

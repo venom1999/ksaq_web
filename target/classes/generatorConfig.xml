@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="db.properties"/>
+    <context id="kuangshan" targetRuntime="MyBatis3">
+        <jdbcConnection connectionURL="${database_url}" driverClass="${driver_class}" password="${database_password}"
+                        userId="${database_username}"/>
+        <javaModelGenerator targetPackage="com.kuangshan.riskcontrol.model" targetProject="src\main\java"/>
+        <sqlMapGenerator targetPackage="com.kuangshan.riskcontrol.dao" targetProject="src\main\java"/>
+        <javaClientGenerator targetPackage="com.kuangshan.riskcontrol.dao" targetProject="src\main\java"
+                             type="XMLMAPPER"/>
+        <table tableName="employee_education_report_t" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuangshan.riskcontrol.dao.TestJudgeTMapper">
+  <resultMap id="BaseResultMap" type="com.kuangshan.riskcontrol.model.TestJudgeT">
+
+    <id column="judge_id" jdbcType="INTEGER" property="judge_id" />
+    <result column="edu_category_id" jdbcType="INTEGER" property="edu_category_id" />
+    <result column="edu_knowledge_point_id" jdbcType="INTEGER" property="edu_knowledge_point_id" />
+    <result column="judge_content" jdbcType="VARCHAR" property="judge_content" />
+    <result column="answer" jdbcType="VARCHAR" property="answer" />
+    <result column="explanation" jdbcType="NVARCHAR" property="explanation" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+
+    judge_id, edu_category_id, edu_knowledge_point_id, judge_content, answer, deleted, explanation
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select 
+    <include refid="Base_Column_List" />
+    from test_judge_t
+    where judge_id = #{judge_id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from test_judge_t
+  </select>
+
+  <select id="selectByEduCategoryId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select
+    <include refid="Base_Column_List" />
+    from test_judge_t
+    where edu_category_id = #{edu_category_id,jdbcType=INTEGER} AND deleted = 0
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from test_judge_t
+    where judge_id = #{judge_id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.kuangshan.riskcontrol.model.TestJudgeT">
+
+    insert into test_judge_t (judge_id, edu_category_id, edu_knowledge_point_id, 
+      judge_content, answer, deleted, explanation)
+    values (#{judge_id,jdbcType=INTEGER}, #{edu_category_id,jdbcType=INTEGER}, #{edu_knowledge_point_id,jdbcType=INTEGER}, 
+      #{judge_content,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, #{deleted,jdbcType=INTEGER},
+      #{explanation,jdbcType=NVARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.kuangshan.riskcontrol.model.TestJudgeT">
+
+    insert into test_judge_t
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="judge_id != null">
+        judge_id,
+      </if>
+      <if test="edu_category_id != null">
+        edu_category_id,
+      </if>
+      <if test="edu_knowledge_point_id != null">
+        edu_knowledge_point_id,
+      </if>
+      <if test="judge_content != null">
+        judge_content,
+      </if>
+      <if test="answer != null">
+        answer,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="explanation != null">
+        explanation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="judge_id != null">
+        #{judge_id,jdbcType=INTEGER},
+      </if>
+      <if test="edu_category_id != null">
+        #{edu_category_id,jdbcType=INTEGER},
+      </if>
+      <if test="edu_knowledge_point_id != null">
+        #{edu_knowledge_point_id,jdbcType=INTEGER},
+      </if>
+      <if test="judge_content != null">
+        #{judge_content,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="explanation != null">
+        #{explanation,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.kuangshan.riskcontrol.model.TestJudgeT">
+
+    update test_judge_t
+    <set>
+      <if test="edu_category_id != null">
+        edu_category_id = #{edu_category_id,jdbcType=INTEGER},
+      </if>
+      <if test="edu_knowledge_point_id != null">
+        edu_knowledge_point_id = #{edu_knowledge_point_id,jdbcType=INTEGER},
+      </if>
+      <if test="judge_content != null">
+        judge_content = #{judge_content,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="explanation != null">
+        explanation = #{explanation,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where judge_id = #{judge_id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.kuangshan.riskcontrol.model.TestJudgeT">
+
+    update test_judge_t
+    set edu_category_id = #{edu_category_id,jdbcType=INTEGER},
+      edu_knowledge_point_id = #{edu_knowledge_point_id,jdbcType=INTEGER},
+      judge_content = #{judge_content,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=INTEGER},
+      explanation = #{explanation,jdbcType=NVARCHAR}
+    where judge_id = #{judge_id,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+</mapper>

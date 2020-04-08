@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuangshan.riskcontrol.dao.TestFillInBlanksTMapper">
+  <resultMap id="BaseResultMap" type="com.kuangshan.riskcontrol.model.TestFillInBlanksT">
+
+    <id column="blank_id" jdbcType="INTEGER" property="blank_id" />
+    <result column="edu_category_id" jdbcType="INTEGER" property="edu_category_id" />
+    <result column="edu_knowledge_point_id" jdbcType="INTEGER" property="edu_knowledge_point_id" />
+    <result column="question_content" jdbcType="VARCHAR" property="question_content" />
+    <result column="blank_num" jdbcType="VARCHAR" property="blank_num" />
+    <result column="answer" jdbcType="VARCHAR" property="answer" />
+    <result column="explanation" jdbcType="NVARCHAR" property="explanation" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+
+    blank_id, edu_category_id, edu_knowledge_point_id, question_content, blank_num, answer, deleted, explanation
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select 
+    <include refid="Base_Column_List" />
+    from test_fill_in_blanks_t
+    where blank_id = #{blank_id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from test_fill_in_blanks_t
+  </select>
+
+  <select id="selectByEduCategoryId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select
+    <include refid="Base_Column_List" />
+    from test_fill_in_blanks_t
+    where edu_category_id = #{edu_category_id,jdbcType=INTEGER} AND deleted = 0
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from test_fill_in_blanks_t
+    where blank_id = #{blank_id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.kuangshan.riskcontrol.model.TestFillInBlanksT">
+
+    insert into test_fill_in_blanks_t (blank_id, edu_category_id, edu_knowledge_point_id, 
+      question_content, blank_num, answer, deleted, explanation
+      )
+    values (#{blank_id,jdbcType=INTEGER}, #{edu_category_id,jdbcType=INTEGER}, #{edu_knowledge_point_id,jdbcType=INTEGER}, 
+      #{question_content,jdbcType=VARCHAR}, #{blank_num,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR},
+      #{deleted,jdbcType=INTEGER}, #{explanation,jdbcType=NVARCHAR}
+      )
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.kuangshan.riskcontrol.model.TestFillInBlanksT">
+
+    insert into test_fill_in_blanks_t
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="blank_id != null">
+        blank_id,
+      </if>
+      <if test="edu_category_id != null">
+        edu_category_id,
+      </if>
+      <if test="edu_knowledge_point_id != null">
+        edu_knowledge_point_id,
+      </if>
+      <if test="question_content != null">
+        question_content,
+      </if>
+      <if test="blank_num != null">
+        blank_num,
+      </if>
+      <if test="answer != null">
+        answer,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="explanation != null">
+        explanation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="blank_id != null">
+        #{blank_id,jdbcType=INTEGER},
+      </if>
+      <if test="edu_category_id != null">
+        #{edu_category_id,jdbcType=INTEGER},
+      </if>
+      <if test="edu_knowledge_point_id != null">
+        #{edu_knowledge_point_id,jdbcType=INTEGER},
+      </if>
+      <if test="question_content != null">
+        #{question_content,jdbcType=VARCHAR},
+      </if>
+      <if test="blank_num != null">
+        #{blank_num,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="explanation != null">
+        #{explanation,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.kuangshan.riskcontrol.model.TestFillInBlanksT">
+
+    update test_fill_in_blanks_t
+    <set>
+      <if test="edu_category_id != null">
+        edu_category_id = #{edu_category_id,jdbcType=INTEGER},
+      </if>
+      <if test="edu_knowledge_point_id != null">
+        edu_knowledge_point_id = #{edu_knowledge_point_id,jdbcType=INTEGER},
+      </if>
+      <if test="question_content != null">
+        question_content = #{question_content,jdbcType=VARCHAR},
+      </if>
+      <if test="blank_num != null">
+        blank_num = #{blank_num,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="explanation != null">
+        explanation = #{explanation,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where blank_id = #{blank_id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.kuangshan.riskcontrol.model.TestFillInBlanksT">
+
+    update test_fill_in_blanks_t
+    set edu_category_id = #{edu_category_id,jdbcType=INTEGER},
+      edu_knowledge_point_id = #{edu_knowledge_point_id,jdbcType=INTEGER},
+      question_content = #{question_content,jdbcType=VARCHAR},
+      blank_num = #{blank_num,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=INTEGER},
+      explanation = #{explanation,jdbcType=NVARCHAR}
+    where blank_id = #{blank_id,jdbcType=INTEGER}
+  </update>
+
+
+
+
+</mapper>

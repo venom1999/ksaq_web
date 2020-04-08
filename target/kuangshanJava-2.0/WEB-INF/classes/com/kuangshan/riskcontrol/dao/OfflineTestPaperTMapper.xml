@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuangshan.riskcontrol.dao.OfflineTestPaperTMapper">
+  <resultMap id="BaseResultMap" type="com.kuangshan.riskcontrol.model.OfflineTestPaperT">
+    <id column="paper_id" jdbcType="INTEGER" property="paper_id" />
+    <result column="test_id" jdbcType="INTEGER" property="test_id" />
+    <result column="total_score" jdbcType="INTEGER" property="total_score" />
+    <result column="single_choose_score" jdbcType="DECIMAL" property="single_choose_score" />
+    <result column="multi_choice_score" jdbcType="DECIMAL" property="multi_choice_score" />
+    <result column="judge_score" jdbcType="DECIMAL" property="judge_score" />
+    <result column="question_score" jdbcType="DECIMAL" property="question_score" />
+    <result column="blanks_test_score" jdbcType="DECIMAL" property="blanks_test_score" />
+    <result column="single_choose_num" jdbcType="INTEGER" property="single_choose_num" />
+    <result column="multi_choice_num" jdbcType="INTEGER" property="multi_choice_num" />
+    <result column="judge_num" jdbcType="INTEGER" property="judge_num" />
+    <result column="question_num" jdbcType="INTEGER" property="question_num" />
+    <result column="blanks_test_num" jdbcType="INTEGER" property="blanks_test_num" />
+    <result column="single_choose" jdbcType="VARCHAR" property="single_choose" />
+    <result column="multi_choice" jdbcType="VARCHAR" property="multi_choice" />
+    <result column="judge" jdbcType="VARCHAR" property="judge" />
+    <result column="question" jdbcType="VARCHAR" property="question" />
+    <result column="blanks_test" jdbcType="VARCHAR" property="blanks_test" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+
+    paper_id, test_id, total_score, single_choose_score, multi_choice_score, judge_score, 
+    question_score, blanks_test_score, single_choose_num, multi_choice_num, judge_num, 
+    question_num, blanks_test_num, single_choose, multi_choice, judge, question, blanks_test
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select 
+    <include refid="Base_Column_List" />
+    from offline_test_paper_t
+    where paper_id = #{paper_id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from offline_test_paper_t
+    where paper_id = #{paper_id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.kuangshan.riskcontrol.model.OfflineTestPaperT">
+
+    insert into offline_test_paper_t (paper_id, test_id, total_score, 
+      single_choose_score, multi_choice_score, 
+      judge_score, question_score, blanks_test_score, 
+      single_choose_num, multi_choice_num, judge_num, 
+      question_num, blanks_test_num, single_choose, 
+      multi_choice, judge, question, 
+      blanks_test)
+    values (#{paper_id,jdbcType=INTEGER}, #{test_id,jdbcType=INTEGER}, #{total_score,jdbcType=INTEGER}, 
+      #{single_choose_score,jdbcType=DECIMAL}, #{multi_choice_score,jdbcType=DECIMAL}, 
+      #{judge_score,jdbcType=DECIMAL}, #{question_score,jdbcType=DECIMAL}, #{blanks_test_score,jdbcType=DECIMAL}, 
+      #{single_choose_num,jdbcType=INTEGER}, #{multi_choice_num,jdbcType=INTEGER}, #{judge_num,jdbcType=INTEGER}, 
+      #{question_num,jdbcType=INTEGER}, #{blanks_test_num,jdbcType=INTEGER}, #{single_choose,jdbcType=VARCHAR}, 
+      #{multi_choice,jdbcType=VARCHAR}, #{judge,jdbcType=VARCHAR}, #{question,jdbcType=VARCHAR}, 
+      #{blanks_test,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.kuangshan.riskcontrol.model.OfflineTestPaperT">
+
+    insert into offline_test_paper_t
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paper_id != null">
+        paper_id,
+      </if>
+      <if test="test_id != null">
+        test_id,
+      </if>
+      <if test="total_score != null">
+        total_score,
+      </if>
+      <if test="single_choose_score != null">
+        single_choose_score,
+      </if>
+      <if test="multi_choice_score != null">
+        multi_choice_score,
+      </if>
+      <if test="judge_score != null">
+        judge_score,
+      </if>
+      <if test="question_score != null">
+        question_score,
+      </if>
+      <if test="blanks_test_score != null">
+        blanks_test_score,
+      </if>
+      <if test="single_choose_num != null">
+        single_choose_num,
+      </if>
+      <if test="multi_choice_num != null">
+        multi_choice_num,
+      </if>
+      <if test="judge_num != null">
+        judge_num,
+      </if>
+      <if test="question_num != null">
+        question_num,
+      </if>
+      <if test="blanks_test_num != null">
+        blanks_test_num,
+      </if>
+      <if test="single_choose != null">
+        single_choose,
+      </if>
+      <if test="multi_choice != null">
+        multi_choice,
+      </if>
+      <if test="judge != null">
+        judge,
+      </if>
+      <if test="question != null">
+        question,
+      </if>
+      <if test="blanks_test != null">
+        blanks_test,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paper_id != null">
+        #{paper_id,jdbcType=INTEGER},
+      </if>
+      <if test="test_id != null">
+        #{test_id,jdbcType=INTEGER},
+      </if>
+      <if test="total_score != null">
+        #{total_score,jdbcType=INTEGER},
+      </if>
+      <if test="single_choose_score != null">
+        #{single_choose_score,jdbcType=DECIMAL},
+      </if>
+      <if test="multi_choice_score != null">
+        #{multi_choice_score,jdbcType=DECIMAL},
+      </if>
+      <if test="judge_score != null">
+        #{judge_score,jdbcType=DECIMAL},
+      </if>
+      <if test="question_score != null">
+        #{question_score,jdbcType=DECIMAL},
+      </if>
+      <if test="blanks_test_score != null">
+        #{blanks_test_score,jdbcType=DECIMAL},
+      </if>
+      <if test="single_choose_num != null">
+        #{single_choose_num,jdbcType=INTEGER},
+      </if>
+      <if test="multi_choice_num != null">
+        #{multi_choice_num,jdbcType=INTEGER},
+      </if>
+      <if test="judge_num != null">
+        #{judge_num,jdbcType=INTEGER},
+      </if>
+      <if test="question_num != null">
+        #{question_num,jdbcType=INTEGER},
+      </if>
+      <if test="blanks_test_num != null">
+        #{blanks_test_num,jdbcType=INTEGER},
+      </if>
+      <if test="single_choose != null">
+        #{single_choose,jdbcType=VARCHAR},
+      </if>
+      <if test="multi_choice != null">
+        #{multi_choice,jdbcType=VARCHAR},
+      </if>
+      <if test="judge != null">
+        #{judge,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="blanks_test != null">
+        #{blanks_test,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.kuangshan.riskcontrol.model.OfflineTestPaperT">
+
+    update offline_test_paper_t
+    <set>
+      <if test="test_id != null">
+        test_id = #{test_id,jdbcType=INTEGER},
+      </if>
+      <if test="total_score != null">
+        total_score = #{total_score,jdbcType=INTEGER},
+      </if>
+      <if test="single_choose_score != null">
+        single_choose_score = #{single_choose_score,jdbcType=DECIMAL},
+      </if>
+      <if test="multi_choice_score != null">
+        multi_choice_score = #{multi_choice_score,jdbcType=DECIMAL},
+      </if>
+      <if test="judge_score != null">
+        judge_score = #{judge_score,jdbcType=DECIMAL},
+      </if>
+      <if test="question_score != null">
+        question_score = #{question_score,jdbcType=DECIMAL},
+      </if>
+      <if test="blanks_test_score != null">
+        blanks_test_score = #{blanks_test_score,jdbcType=DECIMAL},
+      </if>
+      <if test="single_choose_num != null">
+        single_choose_num = #{single_choose_num,jdbcType=INTEGER},
+      </if>
+      <if test="multi_choice_num != null">
+        multi_choice_num = #{multi_choice_num,jdbcType=INTEGER},
+      </if>
+      <if test="judge_num != null">
+        judge_num = #{judge_num,jdbcType=INTEGER},
+      </if>
+      <if test="question_num != null">
+        question_num = #{question_num,jdbcType=INTEGER},
+      </if>
+      <if test="blanks_test_num != null">
+        blanks_test_num = #{blanks_test_num,jdbcType=INTEGER},
+      </if>
+      <if test="single_choose != null">
+        single_choose = #{single_choose,jdbcType=VARCHAR},
+      </if>
+      <if test="multi_choice != null">
+        multi_choice = #{multi_choice,jdbcType=VARCHAR},
+      </if>
+      <if test="judge != null">
+        judge = #{judge,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        question = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="blanks_test != null">
+        blanks_test = #{blanks_test,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where paper_id = #{paper_id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.kuangshan.riskcontrol.model.OfflineTestPaperT">
+
+    update offline_test_paper_t
+    set test_id = #{test_id,jdbcType=INTEGER},
+      total_score = #{total_score,jdbcType=INTEGER},
+      single_choose_score = #{single_choose_score,jdbcType=DECIMAL},
+      multi_choice_score = #{multi_choice_score,jdbcType=DECIMAL},
+      judge_score = #{judge_score,jdbcType=DECIMAL},
+      question_score = #{question_score,jdbcType=DECIMAL},
+      blanks_test_score = #{blanks_test_score,jdbcType=DECIMAL},
+      single_choose_num = #{single_choose_num,jdbcType=INTEGER},
+      multi_choice_num = #{multi_choice_num,jdbcType=INTEGER},
+      judge_num = #{judge_num,jdbcType=INTEGER},
+      question_num = #{question_num,jdbcType=INTEGER},
+      blanks_test_num = #{blanks_test_num,jdbcType=INTEGER},
+      single_choose = #{single_choose,jdbcType=VARCHAR},
+      multi_choice = #{multi_choice,jdbcType=VARCHAR},
+      judge = #{judge,jdbcType=VARCHAR},
+      question = #{question,jdbcType=VARCHAR},
+      blanks_test = #{blanks_test,jdbcType=VARCHAR}
+    where paper_id = #{paper_id,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteByTestID">
+    delete from offline_test_paper_t where test_id = #{test_id}
+  </delete>
+
+
+</mapper>
