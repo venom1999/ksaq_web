@@ -51,12 +51,12 @@ public class LoginController {
             userID = dbo.getString("select EmployeeNum from employee_t where EmployeeID = '" + userID + "'", "EmployeeNum");
         }
         String userStatus = dbo.getString(
-                "SELECT case when WebStatus " +
+                "SELECT case when MobileStatus " +
                         "is null  then '0'  " +
-                        "when WebStatus ='' THEN '0' " +
-                        "else WebStatus end as WebStatus " +
+                        "when MobileStatus ='' THEN '0' " +
+                        "else MobileStatus end as MobileStatus " +
                         "from userinfo_t WHERE EmployeeNum ='" + userID + "'",
-                "WebStatus");
+                "MobileStatus");
 
         if (userStatus.equals("2")) {
             String LockedTime = dbo.getString("SELECT LockedTime from userinfo_t WHERE EmployeeNum ='" + userID + "'", "LockedTime");
@@ -91,6 +91,7 @@ public class LoginController {
                 String userInstitutionCategoryNum = "";
                 String userInstitution = "";
                 String userInstitutionName = "";
+                String EmployeeId = "";
                 if (userID.equals("admin") || userID.equals("kuang")) {
                     userInstitution = "AHB";
                     userInstitutionName = "安全管理部";
@@ -102,6 +103,8 @@ public class LoginController {
                         userInstitution = list4.get(0).get("InstitutionNum").toString();
                         userInstitutionName = list4.get(0).get("InstitutionName").toString();
                         userInstitutionCategoryNum = list4.get(0).get("InstitutionCategoryNum").toString();
+                        EmployeeId = list4.get(0).get("EmployeeID").toString();
+                        System.out.println("用户id："+EmployeeId);
                     } else {
                         String sql5 = "select c.*,i.InstitutionName,i.InstitutionCategoryNum from ContractorEmployee_t c left join institution_t i on c.InstitutionNum=i.InstitutionNum where EmployeeNum='" + userID + "'";
                         List<Map<String, Object>> list5 = DBUtils.query(sql5);
@@ -109,7 +112,8 @@ public class LoginController {
                             userInstitution = list5.get(0).get("InstitutionNum").toString();
                             userInstitutionName = list5.get(0).get("InstitutionName").toString();
                             userInstitutionCategoryNum = list5.get(0).get("InstitutionCategoryNum").toString();
-
+                            EmployeeId = list5.get(0).get("EmployeeID").toString();
+                            System.out.println("用户id："+EmployeeId);
                         } else {
                             errorHandle(userID);
                             result.put("text", "账号或密码错误");
@@ -139,6 +143,8 @@ public class LoginController {
                     result.put("userInstitution", userInstitution);
                     result.put("userInstitutionName", userInstitutionName);
                     result.put("userNum", userID);
+                    result.put("employeeId",EmployeeId);
+                    System.out.println(EmployeeId);
                     result.put("text", "成功");
                     return result;
                 } else {
